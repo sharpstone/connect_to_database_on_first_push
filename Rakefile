@@ -1,7 +1,12 @@
-raise "NO DATABASE URL" unless ENV['DATABASE_URL']
+require 'bundler'
+Bundler.require(:default)
+
+require 'active_record'
+
 
 task "assets:precompile" do
-  puts "success!"
+  ActiveRecord::Base.establish_connection
+  ActiveRecord::Base.connection.execute("")
 end
 
 task "assets:clean" do
